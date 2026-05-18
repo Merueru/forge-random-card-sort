@@ -1,7 +1,9 @@
-# Forge Random Card Sort
+# Forge Random Card Sort 🎲
 
 Small JavaScript-only extension for Stable Diffusion WebUI Forge that adds a
 button to shuffle Extra Networks cards in the browser.
+
+![Preview](image/randompic001.png)
 
 ## Features
 
