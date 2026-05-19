@@ -9,7 +9,9 @@ function randomSortLoraCards() {
     const pages = gradioApp().querySelectorAll('.extra-network-cards');
 
     pages.forEach(page => {
-        const cards = Array.from(page.children);
+        const cards = Array.from(page.children).filter(card => {
+            return !card.matches('[data-no-random="true"], [data-no-favorite="true"], .forge-prompt-sets-add-card');
+        });
 
         shuffleArray(cards);
 
