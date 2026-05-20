@@ -39,7 +39,7 @@ function createRandomSortButton() {
     button.title = "Random";
 
     button.style.marginLeft = "0px";
-    button.style.padding = "6px 12px";
+    button.style.padding = "6px 2px";
     button.style.borderRadius = "6px";
     button.style.fontSize = "20px";
     button.style.cursor = "pointer";
