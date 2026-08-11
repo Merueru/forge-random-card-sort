@@ -24,5 +24,8 @@ Then restart Forge.
 ## Notes
 
 - Sorting is visual only and does not rename, move, or edit model files.
-- Refreshing the page or reloading the Extra Networks list restores Forge's normal ordering.
+- The shuffled order is kept while navigating between UI pages and is restored
+  after Forge reloads the Extra Networks list.
+- Pressing Random again creates a new order. Using Forge's own sort controls
+  clears the saved random order for that card list.
 - The extension only modifies the Forge UI in the browser.
