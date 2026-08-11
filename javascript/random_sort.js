@@ -88,20 +88,28 @@ function clearRandomSortOrderForControl(control) {
     randomSortOrders.delete(controls.id.replace(/_controls$/, "_cards"));
 }
 
-function randomSortLoraCards() {
-    const pages = gradioApp().querySelectorAll('.extra-network-cards');
+function randomSortCardsInPage(page) {
+    const cards = getRandomSortableCards(page);
 
-    pages.forEach(page => {
-        const cards = getRandomSortableCards(page);
+    shuffleArray(cards);
 
-        shuffleArray(cards);
-
-        cards.forEach(card => {
-            page.appendChild(card);
-        });
-
-        rememberRandomSortOrder(page, cards);
+    cards.forEach(card => {
+        page.appendChild(card);
     });
+
+    rememberRandomSortOrder(page, cards);
+}
+
+function randomSortCardsForControl(control) {
+    if (!control.id) {
+        return;
+    }
+
+    const pageId = control.id.replace(/_controls$/, "_cards");
+    const page = gradioApp().querySelector(`#${pageId}`);
+    if (page) {
+        randomSortCardsInPage(page);
+    }
 }
 
 function createRandomSortButton() {
@@ -127,18 +135,12 @@ function createRandomSortButton() {
     button.style.fontSize = "20px";
     button.style.cursor = "pointer";
 
-    button.onclick = () => {
-        randomSortLoraCards();
-    };
-
     searchContainers.forEach(container => {
-        container.appendChild(button.cloneNode(true));
-    });
-
-    document.querySelectorAll('#random-lora-sort-btn').forEach(btn => {
-        btn.onclick = () => {
-            randomSortLoraCards();
+        const randomButton = button.cloneNode(true);
+        randomButton.onclick = () => {
+            randomSortCardsForControl(container);
         };
+        container.appendChild(randomButton);
     });
 }
 
