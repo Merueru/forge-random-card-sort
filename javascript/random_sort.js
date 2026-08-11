@@ -158,6 +158,8 @@ onUiLoaded(() => {
     }, 2000);
 });
 
-onAfterUiUpdate(() => {
-    applyAllRandomSortOrders();
+onUiUpdate(() => {
+    if (randomSortOrders.size) {
+        applyAllRandomSortOrders();
+    }
 });
